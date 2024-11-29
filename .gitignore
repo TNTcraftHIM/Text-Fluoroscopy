@@ -1,0 +1,3 @@
+huggingface_model/*
+!huggingface_model/put gte-Qwen1.5-7B-instruct here
+.idea

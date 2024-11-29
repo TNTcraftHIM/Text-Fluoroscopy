@@ -21,7 +21,7 @@ def last_token_pool(last_hidden_states,
 max_length = 512
 
 
-pretrained_model_name_or_path = '../huggingface_model/gte-Qwen1.5-7B-instruct'
+pretrained_model_name_or_path = 'huggingface_model/gte-Qwen1.5-7B-instruct'
 which_embedding='gte-qwen_KL_with_first_and_last_layer'
 
 tokenizer = AutoTokenizer.from_pretrained(pretrained_model_name_or_path, trust_remote_code=True)

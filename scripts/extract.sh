@@ -1,0 +1,2 @@
+CUDA_VISIBLE_DEVICES=0 python gte-qwen/save_KL_with_first_and_last_layer.py
+CUDA_VISIBLE_DEVICES=0 python gte-qwen/save_embedding.py
