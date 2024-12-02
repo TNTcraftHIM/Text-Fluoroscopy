@@ -1,0 +1,3 @@
+CUDA_VISIBLE_DEVICES=0 python gte-qwen/save_KL_with_first_and_last_layer_csv.py
+CUDA_VISIBLE_DEVICES=0 python gte-qwen/save_embedding_csv.py
+CUDA_VISIBLE_DEVICES=0 python embedding_classify/classify_with_max_KL_layer_csv.py

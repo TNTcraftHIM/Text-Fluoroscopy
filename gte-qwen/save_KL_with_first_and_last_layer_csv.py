@@ -1,4 +1,4 @@
-
+import pandas as pd
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 import argparse
@@ -43,21 +43,20 @@ def get_kl(model,input_texts):
                    F.kl_div(F.log_softmax(middle_logits, dim=-1), F.softmax(last_logits, dim=-1), reduction='batchmean').item())
     return kls
 
-data_dir = 'dataset/processed_data/'
+data_dir = 'data/'
 test_datasets = {}
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 for file_name in os.listdir(data_dir):
-    if not os.path.exists(save_dir+file_name.split('.')[0]+'.pkl'):
+    if file_name.endswith('.csv'):
         print(file_name)
         result_data = []
         test_datasets[file_name] = {'data':[],'label':[]}
-        with open(data_dir+file_name, 'r') as f:
-            data = json.load(f)
+        data = pd.read_csv(data_dir+file_name, encoding='utf-8')
         kls = []
-        for text_info in tqdm(data):
+        for _, text_info in tqdm(data.iterrows(), total=data.shape[0]):
             text = text_info['text']
-            result = text_info['result']
+            result = 1 if 'MGT' in text_info['label'] else 0
             prompt = text
             kl = get_kl(model,[text])
             kls.append(kl)

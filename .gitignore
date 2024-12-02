@@ -1,3 +1,7 @@
 huggingface_model/*
 !huggingface_model/put gte-Qwen1.5-7B-instruct here
 .idea
+data/*
+!data/put_test_data_here
+save/
+dataset/labels/test_data.pt
